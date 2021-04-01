@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:backgroundTint="@color/white"
+    android:layout_width="250dp"
+    android:layout_height="150dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="244dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:weightSum="5">
+
+        <ImageView
+            android:id="@+id/iv_highlight"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:scaleType="centerCrop"
+            android:src="@drawable/newspaper" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_title_highlight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:maxWidth="230dp"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:text="Noticia Kairo"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="6dp"
+        android:layout_height="match_parent"
+        />
+</LinearLayout>

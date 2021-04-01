@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MesaNewsByKairo</string>
+    <string name="title_activity_teste">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="last_news_title">Últimas notícias</string>
+    <string name="by">Por: </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error_req_news">\"Ops, algo deu errado... \':D \"</string>
+    <string name="favorites_title">Favoritas</string>
+    <string name="not_logged">Não logado</string>
+    <string name="highlights_title">Destaques</string>
+    <string name="news_title">Últimas notícias</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="login_message">Faça seu login</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Senha</string>
+    <string name="cd_logo">logo mesa</string>
+    <string name="login_button_label">Entrar</string>
+    <string name="go_to_sign_up_label">Novo por aqui? Cadastre-se</string>
+</resources>

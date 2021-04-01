@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/iv_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/news_paper"
+        android:scaleType="centerInside"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingHorizontal="32dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="18dp"
+                android:contentDescription="@string/cd_logo"
+                android:src="@drawable/logo_mesa" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="@string/login_message"
+                android:textAlignment="center"
+                android:textSize="18sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@color/red_dark"
+                app:hintTextColor="@color/red_dark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email_label"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/red_dark"
+                    android:textCursorDrawable="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:passwordToggleEnabled="true"
+                app:boxStrokeColor="@color/red_dark"
+                app:hintTextColor="@color/red_dark">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password_label"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/red_dark"
+                    android:textCursorDrawable="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="48dp"
+                android:tag="btn_login"
+                android:onClick="onClick"
+                android:backgroundTint="@color/red"
+                android:text="@string/login_button_label" />
+
+
+            <Button
+                android:id="@+id/btn_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="6dp"
+                android:tag="btn_sign_up"
+                android:onClick="onClick"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/red_dark"
+                android:textStyle="bold"
+                android:text="@string/go_to_sign_up_label" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

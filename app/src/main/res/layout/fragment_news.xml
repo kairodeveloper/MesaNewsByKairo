@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.NewsFragment">
+
+    <com.example.mesanewsbykairo.ui.MovableFloatingActionButton
+        android:id="@+id/btnFabFragmentNews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/red"
+        android:visibility="gone"
+        app:tint="@android:color/white"
+        app:borderWidth="0dp"
+        android:elevation="6dp"
+        android:stateListAnimator="@anim/nav_default_enter_anim"
+        android:src="@drawable/ic_baseline_keyboard_arrow_up_24"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_news"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+    />
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/img_load"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/load_anim"
+    />
+</FrameLayout>

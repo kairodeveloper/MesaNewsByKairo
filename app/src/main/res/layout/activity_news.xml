@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="#F2F2F2"
+    tools:context=".NewsActivity">
+    <FrameLayout
+        android:id="@+id/fragment_activity_news"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="0dp"
+    />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:cardElevation="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="4"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_home_selected"
+                android:tag="btn_home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                app:tint="@color/red"
+                android:visibility="visible"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_home_24"/>
+
+            <ImageButton
+                android:id="@+id/btn_home_non_selected"
+                android:tag="btn_home"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:visibility="gone"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_home_24"/>
+
+            <ImageButton
+                android:id="@+id/btn_search_selected"
+                android:tag="btn_search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:visibility="gone"
+                app:tint="@color/red"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_search_32"/>
+
+            <ImageButton
+                android:id="@+id/btn_search_non_selected"
+                android:tag="btn_search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:visibility="visible"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_search_32"/>
+
+            <ImageButton
+                android:id="@+id/btn_favorites_selected"
+                android:tag="btn_favorites"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                app:tint="@color/red"
+                android:visibility="gone"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_bookmark_32"/>
+
+            <ImageButton
+                android:id="@+id/btn_favorites_non_selected"
+                android:tag="btn_favorites"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:visibility="visible"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_bookmark_32"/>
+
+            <ImageButton
+                android:id="@+id/btn_profile_selected"
+                android:tag="btn_profile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                app:tint="@color/red"
+                android:visibility="gone"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_person_24"/>
+
+            <ImageButton
+                android:id="@+id/btn_profile_non_selected"
+                android:tag="btn_profile"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:onClick="screensSelector"
+                android:src="@drawable/ic_baseline_person_24"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
