@@ -34,4 +34,6 @@
     <string name="fill_email_label">Preencha o email</string>
     <string name="fill_password_label">Preencha a senha</string>
     <string name="different_passwords_label">As senhas estão diferentes!</string>
+    <string name="et_name_sign_up">Nome</string>
+    <string name="fill_name_label">Preencha o nome</string>
 </resources>

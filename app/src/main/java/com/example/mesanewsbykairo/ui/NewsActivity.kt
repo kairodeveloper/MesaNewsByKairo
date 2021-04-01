@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mesanewsbykairo.ui.fragments.FavoritesFragment
 import com.example.mesanewsbykairo.ui.fragments.NewsFragment
+import com.example.mesanewsbykairo.ui.fragments.ProfileFragment
 
 
 const val HOME = "home_fragment"
@@ -28,12 +29,11 @@ class NewsActivity : AppCompatActivity() {
         super.onResume()
 
         val fragmentManager = supportFragmentManager.beginTransaction()
-        var newFragment = Fragment()
 
-        if (screenSelected == HOME) {
-            newFragment = NewsFragment()
+        val newFragment: Fragment = if (screenSelected == HOME) {
+            NewsFragment()
         } else {
-            newFragment = FavoritesFragment()
+            FavoritesFragment()
         }
 
         fragmentManager.replace(R.id.fragment_activity_news, newFragment)
@@ -103,6 +103,12 @@ class NewsActivity : AppCompatActivity() {
                 btnProfileNonSelected.visibility = View.VISIBLE
             }
             else -> {
+                if (screenSelected != PROFILE) {
+                    val newFragment = ProfileFragment()
+                    fragmentManager.replace(R.id.fragment_activity_news, newFragment)
+                    screenSelected = PROFILE
+                }
+
                 btnProfileSelected.visibility = View.VISIBLE
                 btnProfileNonSelected.visibility = View.GONE
 

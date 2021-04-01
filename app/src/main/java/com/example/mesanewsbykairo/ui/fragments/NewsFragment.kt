@@ -98,7 +98,8 @@ class NewsFragment : Fragment(), BtnClickListener {
     private fun initializeData() {
         loader = activity?.findViewById(R.id.img_load)
 
-        recyclerViewNewsAdapter = RecyclerViewNewsAdapter(list, listHighlight, requireContext(), this)
+        recyclerViewNewsAdapter =
+            RecyclerViewNewsAdapter(list, listHighlight, requireContext(), this)
         recyclerView = activity?.findViewById(R.id.rv_news)
 
         recyclerView?.setHasFixedSize(true)

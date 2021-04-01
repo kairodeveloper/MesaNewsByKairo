@@ -19,14 +19,14 @@
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".SignUpActivity"
-            android:parentActivityName=".LoginActivity"></activity>
+            android:parentActivityName=".LoginActivity" />
 
         <meta-data
             android:name="DATABASE"
             android:value="mesa_database.db" />
         <meta-data
             android:name="VERSION"
-            android:value="5" />
+            android:value="6" />
         <meta-data
             android:name="QUERY_LOG"
             android:value="true" />

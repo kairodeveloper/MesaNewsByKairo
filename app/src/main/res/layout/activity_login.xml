@@ -88,9 +88,19 @@
                 android:layout_marginTop="48dp"
                 android:tag="btn_login"
                 android:onClick="onClick"
+                android:visibility="visible"
                 android:backgroundTint="@color/red"
                 android:text="@string/login_button_label" />
 
+            <ProgressBar
+                android:id="@+id/indeterminate_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                />
 
             <Button
                 android:id="@+id/btn_sign_up"

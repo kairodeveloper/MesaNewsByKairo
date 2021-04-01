@@ -13,4 +13,7 @@ class RetrofitInitializer {
         return retrofit.create(NewsService::class.java)
     }
 
+    fun userService() : UserService {
+        return retrofit.create(UserService::class.java)
+    }
 }

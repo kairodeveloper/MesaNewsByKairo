@@ -35,6 +35,24 @@
                 app:hintTextColor="@color/red_dark">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_name_sign_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/et_name_sign_up"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/red_dark"
+                    android:textCursorDrawable="@null" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:boxStrokeColor="@color/red_dark"
+                app:hintTextColor="@color/red_dark">
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_email_sign_up"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

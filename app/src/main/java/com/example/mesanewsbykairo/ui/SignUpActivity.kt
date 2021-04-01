@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 
 class SignUpActivity : AppCompatActivity() {
+    private var textInputEditTextName: TextInputEditText? = null
     private var textInputEditTextEmail: TextInputEditText? = null
     private var textInputEditTextSenha: TextInputEditText? = null
     private var textInputEditTextConfirmSenha: TextInputEditText? = null
@@ -17,14 +18,19 @@ class SignUpActivity : AppCompatActivity() {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.title = "Registro"
 
+        textInputEditTextName = findViewById(R.id.et_name_sign_up)
         textInputEditTextEmail = findViewById(R.id.et_email_sign_up)
         textInputEditTextSenha = findViewById(R.id.et_senha_sign_up)
         textInputEditTextConfirmSenha = findViewById(R.id.et_confirm_senha)
-
     }
 
     private fun validateData(): Boolean {
         return when {
+            textInputEditTextName?.text.toString().isEmpty() -> {
+                textInputEditTextName?.requestFocus()
+                Toast.makeText(this, getString(R.string.fill_name_label), Toast.LENGTH_SHORT).show()
+                false
+            }
             textInputEditTextEmail?.text.toString().isEmpty() -> {
                 textInputEditTextEmail?.requestFocus()
                 Toast.makeText(this, getString(R.string.fill_email_label), Toast.LENGTH_SHORT).show()
