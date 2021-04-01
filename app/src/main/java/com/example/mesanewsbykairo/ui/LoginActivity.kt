@@ -21,19 +21,30 @@ class LoginActivity : AppCompatActivity() {
 
         textInputEditTextEmail = findViewById(R.id.et_email)
         textInputEditTextSenha = findViewById(R.id.et_senha)
-  }
+    }
+
+    private fun validateData() : Boolean {
+        return when {
+            textInputEditTextEmail?.text.toString().isEmpty() -> {
+                textInputEditTextEmail?.requestFocus()
+                Toast.makeText(this, getString(R.string.fill_email_label), Toast.LENGTH_SHORT).show()
+                false
+            }
+            textInputEditTextSenha?.text.toString().isEmpty() -> {
+                textInputEditTextSenha?.requestFocus()
+                Toast.makeText(this, getString(R.string.fill_password_label), Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> {
+                true
+            }
+        }
+
+    }
 
     fun onClick(view: View) {
-        if (view.tag=="btn_login") {
-            if (textInputEditTextEmail?.text.toString().isEmpty()) {
-                textInputEditTextEmail?.requestFocus()
-                Toast.makeText(this, "Preencha o email", Toast.LENGTH_SHORT).show()
-
-            } else if (textInputEditTextSenha?.text.toString().isEmpty()) {
-                textInputEditTextSenha?.requestFocus()
-                Toast.makeText(this, "Preencha a senha", Toast.LENGTH_SHORT).show()
-
-            } else {
+        if (view.tag == "btn_login") {
+            if (validateData()) {
                 Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
             }
         } else {

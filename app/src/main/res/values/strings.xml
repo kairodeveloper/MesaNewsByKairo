@@ -28,4 +28,10 @@
     <string name="cd_logo">logo mesa</string>
     <string name="login_button_label">Entrar</string>
     <string name="go_to_sign_up_label">Novo por aqui? Cadastre-se</string>
+    <string name="confirm_password_label">Confirme sua senha</string>
+    <string name="lets_go_sign_up">Vamos lá!</string>
+    <string name="btn_sign_up_label">Registrar</string>
+    <string name="fill_email_label">Preencha o email</string>
+    <string name="fill_password_label">Preencha a senha</string>
+    <string name="different_passwords_label">As senhas estão diferentes!</string>
 </resources>

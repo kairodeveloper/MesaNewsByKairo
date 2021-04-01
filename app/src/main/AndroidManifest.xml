@@ -16,11 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MesaNewsByKairo"
         tools:replace="android:icon">
-        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".LoginActivity" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:name=".SignUpActivity"
+            android:parentActivityName=".LoginActivity"></activity>
 
         <meta-data
             android:name="DATABASE"
