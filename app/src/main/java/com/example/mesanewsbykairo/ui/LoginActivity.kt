@@ -32,16 +32,18 @@ class LoginActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.indeterminate_bar)
     }
 
-    private fun validateData() : Boolean {
+    private fun validateData(): Boolean {
         return when {
             textInputEditTextEmail?.text.toString().isEmpty() -> {
                 textInputEditTextEmail?.requestFocus()
-                Toast.makeText(this, getString(R.string.fill_email_label), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_email_label), Toast.LENGTH_SHORT)
+                    .show()
                 false
             }
             textInputEditTextSenha?.text.toString().isEmpty() -> {
                 textInputEditTextSenha?.requestFocus()
-                Toast.makeText(this, getString(R.string.fill_password_label), Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.fill_password_label), Toast.LENGTH_SHORT)
+                    .show()
                 false
             }
             else -> {
@@ -57,11 +59,15 @@ class LoginActivity : AppCompatActivity() {
                 btnLogin?.visibility = View.GONE
                 progressBar?.visibility = View.VISIBLE
 
-                val obj = LoginBody(textInputEditTextEmail?.text.toString(), textInputEditTextSenha?.text.toString())
+                val obj = LoginBody(
+                    textInputEditTextEmail?.text.toString(),
+                    textInputEditTextSenha?.text.toString()
+                )
                 val response = RetrofitInitializer().userService().login("application/json", obj)
                 response.enqueue(object : Callback<LoginResponse> {
                     override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                        Toast.makeText(this@LoginActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "${t.message}", Toast.LENGTH_SHORT)
+                            .show()
                         btnLogin?.visibility = View.VISIBLE
                         progressBar?.visibility = View.GONE
                     }
@@ -70,14 +76,20 @@ class LoginActivity : AppCompatActivity() {
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
-                        val user = response.body()?.token?.let {
-                            User(textInputEditTextEmail?.text.toString(), it )
-                        }
-                        user?.save()
+                        if (response.code() == 201) {
+                            val user = response.body()?.token?.let {
+                                User(textInputEditTextEmail?.text.toString(), it)
+                            }
+                            user?.save()
 
-                        val intent = Intent(this@LoginActivity, NewsActivity::class.java)
-                        startActivity(intent)
-                        this@LoginActivity.finish()
+                            val intent = Intent(this@LoginActivity, NewsActivity::class.java)
+                            startActivity(intent)
+                            this@LoginActivity.finish()
+                        } else {
+                            Toast.makeText(this@LoginActivity, getString(R.string.error_req_news), Toast.LENGTH_SHORT).show()
+                            btnLogin?.visibility = View.VISIBLE
+                            progressBar?.visibility = View.GONE
+                        }
                     }
 
                 })

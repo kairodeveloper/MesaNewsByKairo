@@ -17,6 +17,7 @@ import com.example.mesanewsbykairo.services.beans.NewsResponse
 import com.example.mesanewsbykairo.ui.MovableFloatingActionButton
 import com.example.mesanewsbykairo.ui.NewsDetailActivity
 import com.example.mesanewsbykairo.ui.R
+import com.example.mesanewsbykairo.utils.getToken
 import com.google.gson.Gson
 import pl.droidsonroids.gif.GifImageView
 import retrofit2.Call
@@ -27,8 +28,7 @@ class NewsFragment : Fragment(), BtnClickListener {
     private var list = ArrayList<NewsModel>()
     private var listHighlight = ArrayList<NewsModel>()
     private var currentPage = 1
-    private var token =
-        "eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjU5LCJlbWFpbCI6ImRpbWFzLmdhYnJpZWxAenJvYmFuay5jb20uYnIifQ.a3j7sRx8FIedZCfDGLocduOYpcibfIenX7TVJjv6Sis"
+    private var token = getToken()
     private var loader: GifImageView? = null
     private var recyclerView: RecyclerView? = null
     private var recyclerViewNewsAdapter: RecyclerViewNewsAdapter? = null
