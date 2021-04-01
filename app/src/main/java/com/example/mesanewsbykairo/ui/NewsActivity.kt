@@ -8,12 +8,14 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mesanewsbykairo.ui.fragments.FavoritesFragment
+import com.example.mesanewsbykairo.ui.fragments.FiltersFragment
 import com.example.mesanewsbykairo.ui.fragments.NewsFragment
 import com.example.mesanewsbykairo.ui.fragments.ProfileFragment
 
 
 const val HOME = "home_fragment"
 const val FAVORITES = "favorites_fragment"
+const val SEARCH = "filters_fragment"
 const val PROFILE = "profile_fragment"
 
 class NewsActivity : AppCompatActivity() {
@@ -92,6 +94,12 @@ class NewsActivity : AppCompatActivity() {
                 btnProfileNonSelected.visibility = View.VISIBLE
             }
             button.tag.toString() == "btn_search" -> {
+                if (screenSelected != SEARCH) {
+                    val newFragment = FiltersFragment()
+                    fragmentManager.replace(R.id.fragment_activity_news, newFragment)
+                    screenSelected = SEARCH
+                }
+
                 btnSearchSelected.visibility = View.VISIBLE
                 btnSearchNonSelected.visibility = View.GONE
 

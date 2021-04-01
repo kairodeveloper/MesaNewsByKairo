@@ -36,4 +36,5 @@
     <string name="different_passwords_label">As senhas estão diferentes!</string>
     <string name="et_name_sign_up">Nome</string>
     <string name="fill_name_label">Preencha o nome</string>
+    <string name="select_date_label">Selecione a data desejada</string>
 </resources>
