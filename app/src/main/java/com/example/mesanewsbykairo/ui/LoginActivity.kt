@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                         call: Call<LoginResponse>,
                         response: Response<LoginResponse>
                     ) {
-                        if (response.code() == 201) {
+                        if (response.code() == 200 || response.code() == 201) {
                             val user = response.body()?.token?.let {
                                 User(textInputEditTextEmail?.text.toString(), it)
                             }
@@ -87,6 +87,7 @@ class LoginActivity : AppCompatActivity() {
                             this@LoginActivity.finish()
                         } else {
                             Toast.makeText(this@LoginActivity, getString(R.string.error_req_news), Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(this@LoginActivity, response.code().toString(), Toast.LENGTH_SHORT).show()
                             btnLogin?.visibility = View.VISIBLE
                             progressBar?.visibility = View.GONE
                         }

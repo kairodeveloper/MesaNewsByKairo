@@ -13,4 +13,13 @@ interface NewsService {
         @Header("Authorization") token: String,
         @Query("current_page") currentPage: Int
     ) : Call<NewsResponse>
+
+
+    @GET(URL_NEWS)
+    fun getNewsByPublishedData(
+        @Header("Content-Type") contentType: String,
+        @Header("Authorization") token: String,
+        @Query("current_page") currentPage: Int,
+        @Query("published_at") publishedAt: String
+    ) : Call<NewsResponse>
 }

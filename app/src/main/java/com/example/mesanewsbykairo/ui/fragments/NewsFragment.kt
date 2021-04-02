@@ -38,6 +38,7 @@ class NewsFragment : Fragment(), BtnClickListener {
     private var listHighlight = ArrayList<NewsModel>()
     private var listFiltered = ArrayList<NewsModel>()
     private var currentPage = 1
+    private var currentPageFiltered = 1
     private var token = getToken()
     private var loader: GifImageView? = null
     private var recyclerView: RecyclerView? = null
@@ -80,16 +81,72 @@ class NewsFragment : Fragment(), BtnClickListener {
 
             alertDialogBuilder!!.setPositiveButton("Aplicar filtros") { dialog, _ ->
                 val lista1 = ArrayList<NewsModel>()
+//                Toast.makeText(context, getDateFromDatePicker(datePicker), Toast.LENGTH_SHORT)
+//                    .show()
 
-                list.map {newsModel ->
-                    if (newsModel.title!=null) {
-                        if (newsModel.title.toLowerCase(Locale.getDefault()).contains(editTextTitle.text.toString().toLowerCase(Locale.getDefault()))) {
-                            lista1.add(newsModel)
+                val response =
+                    RetrofitInitializer().newsService().getNewsByPublishedData(
+                        "application/json",
+                        token,
+                        currentPageFiltered,
+                        getDateFromDatePicker(datePicker)
+                    )
+                response.enqueue(object : Callback<NewsResponse> {
+                    override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
+                        Toast.makeText(context, "${t.message}", Toast.LENGTH_SHORT).show()
+                    }
+
+                    override fun onResponse(
+                        call: Call<NewsResponse>,
+                        response: Response<NewsResponse>
+                    ) {
+                        Toast.makeText(context, response.body()?.data?.size.toString(), Toast.LENGTH_SHORT).show()
+                        val newList = ArrayList<NewsModel>()
+                        val newListHighlights = ArrayList<NewsModel>()
+                        if (listFiltered.size > 0) {
+                            listFiltered.removeAt(listFiltered.size - 1)
+                        } else {
+                            val newsModelTop = NewsModel()
+                            newsModelTop.isANew = false
+                            newsModelTop.isTitle = true
+                            newList.add(0, newsModelTop)
+                        }
+
+                        response.body()?.data?.map { it ->
+                            if (it.highlight!!) {
+                                newListHighlights.add(it)
+                            } else {
+                                newList.add(it)
+                            }
+                        }
+
+                        val newsModel = NewsModel()
+                        newsModel.isANew = false
+                        newsModel.isTitle = false
+                        newList.add(newsModel)
+
+                        recyclerViewNewsAdapter?.changeList(newList)
+                        listFiltered = newList
+                        lista1.addAll(newList)
+                    }
+                })
+
+
+
+                if (editTextTitle.text.toString().isNotEmpty()) {
+                    listFiltered.map { newsModel ->
+                        if (newsModel.title != null) {
+                            if (newsModel.title.toLowerCase(Locale.getDefault()).contains(
+                                    editTextTitle.text.toString().toLowerCase(Locale.getDefault())
+                                )
+                            ) {
+                                lista1.add(newsModel)
+                            }
                         }
                     }
                 }
 
-                Toast.makeText(context, lista1.size.toString(), Toast.LENGTH_SHORT).show()
+                listFiltered = lista1
                 recyclerViewNewsAdapter?.changeList(lista1)
                 dialog.dismiss()
             }
@@ -103,14 +160,14 @@ class NewsFragment : Fragment(), BtnClickListener {
         }
     }
 
-    private fun getDateFromDatePicker(datePicker: DatePicker) : String {
+    private fun getDateFromDatePicker(datePicker: DatePicker): String {
         var dayDP = datePicker.dayOfMonth.toString()
-        if (dayDP.toInt()<10) {
+        if (dayDP.toInt() < 10) {
             dayDP = ("0").plus(dayDP)
         }
 
         var monthDP = datePicker.month.plus(1).toString()
-        if (monthDP.toInt()<10) {
+        if (monthDP.toInt() < 10) {
             monthDP = ("0").plus(monthDP)
         }
 
@@ -191,6 +248,7 @@ class NewsFragment : Fragment(), BtnClickListener {
 
 
         list = newList
+        listFiltered = newList
         listHighlight = newListHighligh
 
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
