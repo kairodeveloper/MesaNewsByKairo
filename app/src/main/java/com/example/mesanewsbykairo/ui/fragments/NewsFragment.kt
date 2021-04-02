@@ -100,7 +100,6 @@ class NewsFragment : Fragment(), BtnClickListener {
                         call: Call<NewsResponse>,
                         response: Response<NewsResponse>
                     ) {
-                        Toast.makeText(context, response.body()?.data?.size.toString(), Toast.LENGTH_SHORT).show()
                         val newList = ArrayList<NewsModel>()
                         val newListHighlights = ArrayList<NewsModel>()
                         if (listFiltered.size > 0) {
@@ -125,7 +124,6 @@ class NewsFragment : Fragment(), BtnClickListener {
                         newsModel.isTitle = false
                         newList.add(newsModel)
 
-                        recyclerViewNewsAdapter?.changeList(newList)
                         listFiltered = newList
                         lista1.addAll(newList)
                     }
