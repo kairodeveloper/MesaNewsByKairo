@@ -136,6 +136,12 @@ open class RecyclerViewNewsAdapter (private var news: ArrayList<NewsModel>,
         }
     }
 
+    open fun changeList(newsList: ArrayList<NewsModel>) {
+        news.clear()
+        news.addAll(newsList)
+        notifyDataSetChanged()
+    }
+
     open fun setDataOnList(listNewsModel: ArrayList<NewsModel>) {
         news.addAll(listNewsModel)
         notifyDataSetChanged()

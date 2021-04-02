@@ -23,7 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:weightSum="4"
+            android:weightSum="3"
             android:orientation="horizontal">
 
             <ImageButton
@@ -48,29 +48,6 @@
                 android:visibility="gone"
                 android:onClick="screensSelector"
                 android:src="@drawable/ic_baseline_home_24"/>
-
-            <ImageButton
-                android:id="@+id/btn_search_selected"
-                android:tag="btn_search"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:visibility="gone"
-                app:tint="@color/red"
-                android:onClick="screensSelector"
-                android:src="@drawable/ic_baseline_search_32"/>
-
-            <ImageButton
-                android:id="@+id/btn_search_non_selected"
-                android:tag="btn_search"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:visibility="visible"
-                android:onClick="screensSelector"
-                android:src="@drawable/ic_baseline_search_32"/>
 
             <ImageButton
                 android:id="@+id/btn_favorites_selected"

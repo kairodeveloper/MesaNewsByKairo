@@ -35,8 +35,12 @@
             android:value="com.example" />
 
         <activity android:name=".NewsActivity" />
-        <activity android:name=".NewsDetailActivity"
+        <activity android:name=".FilterActivity"
             android:parentActivityName=".NewsActivity"/>
+
+        <activity
+            android:name=".NewsDetailActivity"
+            android:parentActivityName=".NewsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

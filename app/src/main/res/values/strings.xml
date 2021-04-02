@@ -36,5 +36,9 @@
     <string name="different_passwords_label">As senhas estão diferentes!</string>
     <string name="et_name_sign_up">Nome</string>
     <string name="fill_name_label">Preencha o nome</string>
-    <string name="select_date_label">Selecione a data desejada</string>
+    <string name="select_date_label">Filtrar por data</string>
+    <string name="btn_filter_label">Filtros</string>
+    <string name="btn_filter_apply_label">Filtrar</string>
+    <string name="clean_filter_label">Limpar filtros</string>
+    <string name="filter_titulo_label">Filtrar por título</string>
 </resources>

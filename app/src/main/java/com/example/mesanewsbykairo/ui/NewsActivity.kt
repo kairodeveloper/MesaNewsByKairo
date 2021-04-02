@@ -8,14 +8,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.mesanewsbykairo.ui.fragments.FavoritesFragment
-import com.example.mesanewsbykairo.ui.fragments.FiltersFragment
 import com.example.mesanewsbykairo.ui.fragments.NewsFragment
 import com.example.mesanewsbykairo.ui.fragments.ProfileFragment
 
 
 const val HOME = "home_fragment"
 const val FAVORITES = "favorites_fragment"
-const val SEARCH = "filters_fragment"
 const val PROFILE = "profile_fragment"
 
 class NewsActivity : AppCompatActivity() {
@@ -34,8 +32,10 @@ class NewsActivity : AppCompatActivity() {
 
         val newFragment: Fragment = if (screenSelected == HOME) {
             NewsFragment()
-        } else {
+        } else if (screenSelected == FAVORITES) {
             FavoritesFragment()
+        } else {
+            ProfileFragment()
         }
 
         fragmentManager.replace(R.id.fragment_activity_news, newFragment)
@@ -49,8 +49,6 @@ class NewsActivity : AppCompatActivity() {
 
         val btnHomeSelected: ImageButton =  findViewById(R.id.btn_home_selected)
         val btnHomeNonSelected: ImageButton =  findViewById(R.id.btn_home_non_selected)
-        val btnSearchSelected: ImageButton =  findViewById(R.id.btn_search_selected)
-        val btnSearchNonSelected: ImageButton =  findViewById(R.id.btn_search_non_selected)
         val btnFavoritesSelected: ImageButton =  findViewById(R.id.btn_favorites_selected)
         val btnFavoritesNonSelected: ImageButton =  findViewById(R.id.btn_favorites_non_selected)
         val btnProfileSelected: ImageButton =  findViewById(R.id.btn_profile_selected)
@@ -68,8 +66,6 @@ class NewsActivity : AppCompatActivity() {
                 btnHomeSelected.visibility = View.VISIBLE
                 btnHomeNonSelected.visibility = View.GONE
 
-                btnSearchSelected.visibility = View.GONE
-                btnSearchNonSelected.visibility = View.VISIBLE
                 btnFavoritesSelected.visibility = View.GONE
                 btnFavoritesNonSelected.visibility = View.VISIBLE
                 btnProfileSelected.visibility = View.GONE
@@ -88,25 +84,6 @@ class NewsActivity : AppCompatActivity() {
 
                 btnHomeSelected.visibility = View.GONE
                 btnHomeNonSelected.visibility = View.VISIBLE
-                btnSearchSelected.visibility = View.GONE
-                btnSearchNonSelected.visibility = View.VISIBLE
-                btnProfileSelected.visibility = View.GONE
-                btnProfileNonSelected.visibility = View.VISIBLE
-            }
-            button.tag.toString() == "btn_search" -> {
-                if (screenSelected != SEARCH) {
-                    val newFragment = FiltersFragment()
-                    fragmentManager.replace(R.id.fragment_activity_news, newFragment)
-                    screenSelected = SEARCH
-                }
-
-                btnSearchSelected.visibility = View.VISIBLE
-                btnSearchNonSelected.visibility = View.GONE
-
-                btnHomeSelected.visibility = View.GONE
-                btnHomeNonSelected.visibility = View.VISIBLE
-                btnFavoritesSelected.visibility = View.GONE
-                btnFavoritesNonSelected.visibility = View.VISIBLE
                 btnProfileSelected.visibility = View.GONE
                 btnProfileNonSelected.visibility = View.VISIBLE
             }
@@ -122,8 +99,6 @@ class NewsActivity : AppCompatActivity() {
 
                 btnHomeSelected.visibility = View.GONE
                 btnHomeNonSelected.visibility = View.VISIBLE
-                btnSearchSelected.visibility = View.GONE
-                btnSearchNonSelected.visibility = View.VISIBLE
                 btnFavoritesSelected.visibility = View.GONE
                 btnFavoritesNonSelected.visibility = View.VISIBLE
             }

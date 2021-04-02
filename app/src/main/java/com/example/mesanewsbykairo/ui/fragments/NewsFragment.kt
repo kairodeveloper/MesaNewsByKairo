@@ -2,10 +2,16 @@ package com.example.mesanewsbykairo.ui.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract.CommonDataKinds.Note
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,10 +29,14 @@ import pl.droidsonroids.gif.GifImageView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class NewsFragment : Fragment(), BtnClickListener {
     private var list = ArrayList<NewsModel>()
     private var listHighlight = ArrayList<NewsModel>()
+    private var listFiltered = ArrayList<NewsModel>()
     private var currentPage = 1
     private var token = getToken()
     private var loader: GifImageView? = null
@@ -34,6 +44,14 @@ class NewsFragment : Fragment(), BtnClickListener {
     private var recyclerViewNewsAdapter: RecyclerViewNewsAdapter? = null
     private var btnFabFragmentNews: MovableFloatingActionButton? = null
     private val linearLayoutManager = LinearLayoutManager(context)
+    private var btnFilterNews: Button? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        (activity as AppCompatActivity?)!!.supportActionBar?.hide()
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,7 +64,59 @@ class NewsFragment : Fragment(), BtnClickListener {
     override fun onStart() {
         super.onStart()
 
+        btnFilterNews = activity?.findViewById(R.id.btn_filter_news)
         initializeData()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        btnFilterNews?.setOnClickListener {
+            val alertDialogBuilder = activity?.let { it1 -> AlertDialog.Builder(it1) }
+            val view: View = layoutInflater.inflate(R.layout.fragment_filter, null)
+
+            val datePicker = view.findViewById<DatePicker>(R.id.datePicker)
+            val editTextTitle = view.findViewById<EditText>(R.id.et_filter_titulo)
+
+            alertDialogBuilder!!.setPositiveButton("Aplicar filtros") { dialog, _ ->
+                val lista1 = ArrayList<NewsModel>()
+
+                list.map {newsModel ->
+                    if (newsModel.title!=null) {
+                        if (newsModel.title.toLowerCase(Locale.getDefault()).contains(editTextTitle.text.toString().toLowerCase(Locale.getDefault()))) {
+                            lista1.add(newsModel)
+                        }
+                    }
+                }
+
+                Toast.makeText(context, lista1.size.toString(), Toast.LENGTH_SHORT).show()
+                recyclerViewNewsAdapter?.changeList(lista1)
+                dialog.dismiss()
+            }
+            alertDialogBuilder.setNegativeButton("Limpar filtros") { dialog, _ ->
+                recyclerViewNewsAdapter?.changeList(list)
+                dialog.dismiss()
+            }
+            alertDialogBuilder.setView(view)
+            alertDialogBuilder.show()
+
+        }
+    }
+
+    private fun getDateFromDatePicker(datePicker: DatePicker) : String {
+        var dayDP = datePicker.dayOfMonth.toString()
+        if (dayDP.toInt()<10) {
+            dayDP = ("0").plus(dayDP)
+        }
+
+        var monthDP = datePicker.month.plus(1).toString()
+        if (monthDP.toInt()<10) {
+            monthDP = ("0").plus(monthDP)
+        }
+
+        val yearDP = datePicker.year.toString()
+
+        return yearDP.plus("-").plus(monthDP).plus("-").plus(dayDP)
     }
 
     private fun getNews() {
